@@ -1,8 +1,11 @@
 # setup-python V2
 
 <p align="left">
-  <a href="https://github.com/actions/setup-python"><img alt="GitHub Actions status" src="https://github.com/actions/setup-python/workflows/Main%20workflow/badge.svg"></a>
+  <a href="https://github.com/arBmind/setup-python"><img alt="GitHub Actions status" src="https://github.com/arBmind/setup-python/workflows/Main%20workflow/badge.svg"></a>
 </p>
+
+This is a fork of https://github.com/actions/setup-python with minor tweaks.
+- outputs `python-install-dir` to allow normal use.
 
 This action sets up a Python environment for use in actions by:
 
@@ -29,7 +32,7 @@ Basic:
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
     architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
@@ -48,7 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: arBmind/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
@@ -72,7 +75,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: arBmind/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
@@ -90,7 +93,7 @@ jobs:
         python-version: ['3.5', '3.6', '3.7.4', '3.8']
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: arBmind/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
     - run: python my_script.py
@@ -100,7 +103,7 @@ Download and set up an accurate pre-release version of Python:
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.9.0-beta.4'
 - run: python my_script.py
@@ -110,7 +113,7 @@ Download and set up the latest available version of Python (includes both pre-re
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.9.0-alpha - 3.9.0' # SemVer's version range syntax
 - run: python my_script.py
@@ -130,7 +133,7 @@ jobs:
         - 'pypy-3.7-v7.3.3' # Python 3.7 and PyPy 7.3.3
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: arBmind/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
     - run: python my_script.py
@@ -220,12 +223,12 @@ The action defaults to searching for a dependency file (`requirements.txt` for p
 
 The requirements file format allows to specify dependency versions using logical operators (for example chardet>=3.0.4) or specify dependencies without any versions. In this case the pip install -r requirements.txt command will always try to install the latest available package version. To be sure that the cache will be used, please stick to a specific dependency version and update it manually if necessary.
 
-**Caching pip dependencies:**  
+**Caching pip dependencies:**
 
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.9'
     cache: 'pip'
@@ -239,7 +242,7 @@ steps:
 - uses: actions/checkout@v2
 - name: Install pipenv
   run: pipx install pipenv
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.9'
     cache: 'pipenv'
@@ -251,7 +254,7 @@ steps:
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.9'
     cache: 'pip'
@@ -266,7 +269,7 @@ steps:
 - uses: actions/checkout@v2
 - name: Install pipenv
   run: pipx install pipenv
-- uses: actions/setup-python@v2
+- uses: arBmind/setup-python@v2
   with:
     python-version: '3.9'
     cache: 'pipenv'

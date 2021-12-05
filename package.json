@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/setup-python.git"
+    "url": "git+https://github.com/arBmind/setup-python.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "GitHub",
+  "author": "arBmind",
   "license": "MIT",
   "dependencies": {
     "@actions/cache": "^1.0.8",
