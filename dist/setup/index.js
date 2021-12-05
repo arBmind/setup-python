@@ -2071,6 +2071,8 @@ function findPyPyVersion(versionSpec, architecture) {
         core.exportVariable('pythonLocation', pythonLocation);
         core.addPath(pythonLocation);
         core.addPath(_binDir);
+        core.setOutput('python-version', resolvedPythonVersion);
+        core.setOutput('python-install-dir', installDir);
         return { resolvedPyPyVersion, resolvedPythonVersion };
     });
 }
@@ -57008,6 +57010,7 @@ function usePyPy(majorVersion, architecture) {
     }
     const impl = 'pypy' + majorVersion.toString();
     core.setOutput('python-version', impl);
+    core.setOutput('python-install-dir', installDir);
     return { impl: impl, version: versionFromPath(installDir) };
 }
 function useCpythonVersion(version, architecture) {
@@ -57056,6 +57059,7 @@ function useCpythonVersion(version, architecture) {
         // On Linux and macOS, pip will create the --user directory and add it to PATH as needed.
         const installed = versionFromPath(installDir);
         core.setOutput('python-version', installed);
+        core.setOutput('python-install-dir', installDir);
         return { impl: 'CPython', version: installed };
     });
 }
